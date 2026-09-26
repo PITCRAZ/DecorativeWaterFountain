@@ -6,6 +6,7 @@ const fountainSound = new Audio("./sound.mp3");
 fountainSound.loop = true;
 fountainSound.preload = "auto";
 
+// testing the Three.js setup
 const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(0xc7dfd3, 9, 22);
 
@@ -13,7 +14,11 @@ const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 60);
 camera.position.set(5.2, 4.3, 7.2);
 camera.lookAt(0, 1.45, 0);
 
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  alpha: true,
+  antialias: true,
+});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -85,9 +90,21 @@ const ground = addMesh(
 ground.rotation.x = -Math.PI / 2;
 
 addMesh(new THREE.CylinderGeometry(0.46, 0.55, 0.2, 48), stone, 0, 0.1, 0);
-addMesh(new THREE.CylinderGeometry(0.3, 0.38, 0.16, 48), stoneLight, 0, 0.28, 0);
+addMesh(
+  new THREE.CylinderGeometry(0.3, 0.38, 0.16, 48),
+  stoneLight,
+  0,
+  0.28,
+  0,
+);
 addMesh(makeBowl(1.12, 0.82), stone, 0, 0.34, 0);
-addMesh(new THREE.CylinderGeometry(0.16, 0.25, 1.22, 32), stoneLight, 0, 1.42, 0);
+addMesh(
+  new THREE.CylinderGeometry(0.16, 0.25, 1.22, 32),
+  stoneLight,
+  0,
+  1.42,
+  0,
+);
 addMesh(new THREE.CylinderGeometry(0.28, 0.31, 0.12, 40), stone, 0, 0.82, 0);
 addMesh(new THREE.CylinderGeometry(0.25, 0.25, 0.06, 40), bronze, 0, 1.98, 0);
 addMesh(makeBowl(0.49, 0.42), stoneLight, 0, 2.01, 0);
@@ -143,7 +160,10 @@ for (let index = 0; index < particleCount; index += 1) {
 }
 
 const particleGeometry = new THREE.BufferGeometry();
-particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+particleGeometry.setAttribute(
+  "position",
+  new THREE.BufferAttribute(positions, 3),
+);
 particleGeometry.setAttribute("alpha", new THREE.BufferAttribute(alphas, 1));
 particleGeometry.setAttribute("size", new THREE.BufferAttribute(sizes, 1));
 
@@ -187,7 +207,8 @@ function spawnParticle(index, initialAge = 0) {
   ages[index] = initialAge;
   active[index] = 1;
   positions[index * 3] = velocityX[index] * initialAge;
-  positions[index * 3 + 1] = nozzle.y + velocityY[index] * initialAge - 0.5 * gravity * initialAge ** 2;
+  positions[index * 3 + 1] =
+    nozzle.y + velocityY[index] * initialAge - 0.5 * gravity * initialAge ** 2;
   positions[index * 3 + 2] = velocityZ[index] * initialAge;
   alphas[index] = Math.max(0, 0.82 - initialAge * 0.08);
 }
@@ -292,7 +313,8 @@ function animate(time) {
     const age = ages[index];
     const offset = index * 3;
     positions[offset] = velocityX[index] * age;
-    positions[offset + 1] = nozzle.y + velocityY[index] * age - 0.5 * gravity * age ** 2;
+    positions[offset + 1] =
+      nozzle.y + velocityY[index] * age - 0.5 * gravity * age ** 2;
     positions[offset + 2] = velocityZ[index] * age;
 
     if (positions[offset + 1] <= waterLevel || age > 2.5) {
