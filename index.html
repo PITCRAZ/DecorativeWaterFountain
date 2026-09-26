@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f4e9" />
+    <title>Garden Fountain</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="fountain-app">
+      <header class="topbar">
+        <a class="wordmark" href="/" aria-label="Garden Fountain home">
+          <span class="wordmark-icon" aria-hidden="true">✳</span>
+          <span>STILLWATER <span class="wordmark-light">GARDEN</span></span>
+        </a>
+        <span class="edition">FOUNTAIN No. 01</span>
+      </header>
+
+      <section class="experience" aria-labelledby="page-title">
+        <div class="intro">
+          <p class="eyebrow">
+            <span class="live-dot" aria-hidden="true"></span> YOUR LITTLE MOMENT
+            OF CALM
+          </p>
+          <h1 id="page-title">A garden in motion.</h1>
+          <p class="subtitle">Turn on the water. Let it find its own rhythm.</p>
+        </div>
+
+        <div class="scene" id="fountain">
+          <canvas id="fountain-canvas" aria-label="Three-dimensional decorative fountain"></canvas>
+          <div class="scene-caption">
+            <span>COURTYARD STUDY</span><span>EST. 07:42 AM</span>
+          </div>
+        </div>
+
+        <div class="control-panel">
+          <div class="status-block" aria-live="polite">
+            <span class="status-label">WATER FLOW</span>
+            <span class="status-value" id="status">OFF</span>
+          </div>
+          <button class="control-button" id="toggle-button" type="button" aria-pressed="false">
+            Turn Fountain On
+          </button>
+        </div>
+        <p class="hint" id="hint">
+          The garden is quiet. Start the fountain whenever you're ready.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <span>TAKE A BREATH</span><span class="footer-rule"></span
+        ><span>STAY A WHILE</span>
+      </footer>
+    </main>
+  </body>
+</html>
