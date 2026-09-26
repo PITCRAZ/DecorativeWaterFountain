@@ -14,6 +14,7 @@ const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 60);
 camera.position.set(5.2, 4.3, 7.2);
 camera.lookAt(0, 1.45, 0);
 
+// Raj is working in main new
 const renderer = new THREE.WebGLRenderer({
   canvas,
   alpha: true,
